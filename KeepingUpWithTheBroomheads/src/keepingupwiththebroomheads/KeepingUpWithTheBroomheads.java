@@ -42,7 +42,9 @@ public class KeepingUpWithTheBroomheads {
     public static void loadFromCSV(String filename) throws FileNotFoundException, IOException {
         //initialize file reader
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
-        String line = "";
+        String line = bufferedReader.readLine();
+        
+        //parse entries
         while ((line = bufferedReader.readLine()) != null) {
             //get line from file and split by comma
             String[] entry = line.split(",");
@@ -56,22 +58,28 @@ public class KeepingUpWithTheBroomheads {
             String[] parents = new String[0];
             String[] partners = new String[0];
             if (entry.length > 2 && ! entry[2].equals("")) {
-                parents = entry[2].split(";");
+                parents = entry[2].split(" ");
             }
             if (entry.length > 3 && ! entry[3].equals("")) {
-                partners = entry[3].split(";");
+                partners = entry[3].split(" ");
             }
             
             //add parent/child and partner/partner links
             for (int i = 0; i < parents.length; i++) {
-                Person parent = Family.get(Integer.parseInt(parents[i]));
-                me.addRelation("parent", parent);
-                parent.addRelation("child", me);
+                int parentId = Integer.parseInt(parents[i]);
+                if (parentId < Family.size()) {
+                    Person parent = Family.get(Integer.parseInt(parents[i]));
+                    me.addRelation("parent", parent);
+                    parent.addRelation("child", me);
+                }
             }
             for (int i = 0; i < partners.length; i++) {
-                Person partner = Family.get(Integer.parseInt(partners[i]));
-                me.addRelation("partner", partner);
-                partner.addRelation("partner", me);
+                int partnerId = Integer.parseInt(partners[i]);
+                if (partnerId < Family.size()) {
+                    Person partner = Family.get(Integer.parseInt(partners[i]));
+                    me.addRelation("parent", partner);
+                    partner.addRelation("child", me);
+                }
             }
             
             //add current person to list
