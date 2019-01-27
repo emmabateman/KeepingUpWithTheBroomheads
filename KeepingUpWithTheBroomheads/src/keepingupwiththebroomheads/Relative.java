@@ -6,7 +6,7 @@
 package keepingupwiththebroomheads;
 
 /**
- *
+ * this class is not even being used rn
  * @author emma
  */
 public class Relative {

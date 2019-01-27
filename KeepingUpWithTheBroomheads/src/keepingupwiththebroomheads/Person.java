@@ -9,6 +9,8 @@ import java.util.LinkedList;
 /**
  *
  * @author emma
+ * 
+ * represent a person and the connections that tie them to the family tree
  */
 public class Person {
     private String name;
@@ -17,6 +19,10 @@ public class Person {
     private LinkedList<Person> children;
     private LinkedList<Person> partners;
     
+    /**
+     * constructor
+     * @param name name of the person
+     */
     public Person(String name) {
         this.name = name;
         this.parents = new LinkedList<Person>();
@@ -24,6 +30,11 @@ public class Person {
         this.partners = new LinkedList<Person>();
     }
     
+    /**
+     * add a relationship to one of the lists
+     * @param relationType parent, child, or partner
+     * @param person person object being added to list
+     */
     public void addRelation(String relationType, Person person) {
         if (relationType.equals("parent")) {
             this.parents.add(person);
@@ -36,6 +47,9 @@ public class Person {
         }
     }
     
+    /**
+     * @return name
+     */
     public String getName() {
         return this.name;
     }

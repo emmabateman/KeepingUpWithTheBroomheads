@@ -33,15 +33,26 @@ public class KeepingUpWithTheBroomheads {
         loadFromCSV("family.csv");
         
     }
-    
+    /**
+     * Load family tree from csv file
+     * @param filename the name of the csv file
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public static void loadFromCSV(String filename) throws FileNotFoundException, IOException {
+        //initialize file reader
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
         String line = "";
         while ((line = bufferedReader.readLine()) != null) {
+            //get line from file and split by comma
             String[] entry = line.split(",");
             int idx = Integer.parseInt(entry[0]);
             String name = entry[1];
+            
+            //create new person object
             Person me = new Person(name);
+            
+            //get parent and partner info if present
             String[] parents = new String[0];
             String[] partners = new String[0];
             if (entry.length > 2 && ! entry[2].equals("")) {
@@ -50,6 +61,8 @@ public class KeepingUpWithTheBroomheads {
             if (entry.length > 3 && ! entry[3].equals("")) {
                 partners = entry[3].split(";");
             }
+            
+            //add parent/child and partner/partner links
             for (int i = 0; i < parents.length; i++) {
                 Person parent = Family.get(Integer.parseInt(parents[i]));
                 me.addRelation("parent", parent);
@@ -61,7 +74,8 @@ public class KeepingUpWithTheBroomheads {
                 partner.addRelation("partner", me);
             }
             
-            Family.add(me);
+            //add current person to list
+            Family.add(idx, me);
         }
         
     }
