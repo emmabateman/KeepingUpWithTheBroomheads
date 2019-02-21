@@ -16,7 +16,6 @@ public abstract class Person {
     private String name;
     private LinkedList<DirectRelative> children;
 
-
     /**
      * constructor
      * @param name name of the person
