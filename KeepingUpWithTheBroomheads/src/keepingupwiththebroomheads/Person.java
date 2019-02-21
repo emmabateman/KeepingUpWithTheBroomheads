@@ -22,15 +22,39 @@ public abstract class Person {
      */
     public Person(String name) {
         this.name = name;
-        this.children = new LinkedList<Person>();
+        this.children = new LinkedList<DirectRelative>();
     }
+    /**
+     * Returns an array containing the parents of the given person. If the person is an
+     * indirectRelative, their parents are irrelevent and null is returned.
+     */
+    abstract Person[] getParents();
 
+    /**
+     * Returns an array containing every relevent partner the person has had.
+     * If they have no partners, returns an empty array
+     */
+    abstract Person[] getPartners();
+
+    /**
+     * Returns an array containing this person's children.
+     * If they have no children, an empty array is returned.
+     */
+    public Person[] getChildren() {
+      Person[] childArray = new DirectRelative[children.size()];
+      for(int i = 0; i < children.size(); i++) {
+        childArray[i] = children.get(i);
+      }
+      return childArray;
+    }
     /**
      * add a relationship to one of the lists
      * @param relationType The relationship to the person
      * @param person person object being added to list
      */
     abstract void addRelation(String relationType, Person person);
+
+
 
 
     /**

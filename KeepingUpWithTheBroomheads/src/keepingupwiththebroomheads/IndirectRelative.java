@@ -17,6 +17,22 @@ public class IndirectRelative extends Person {
     }
 
     /**
+     * Returns null
+     * Parents are only tracked for direct relatives
+     */
+    public Person[] getParents() {
+      return null;
+    }
+
+    /**
+     * Returns an array containing this person's directRelative partner
+     */
+    public Person[] getPartners() {
+      Person[] partners = {partner};
+      return partners;
+    }
+
+    /**
      * add a relationship to one of the lists
      * @param relationType The relationship to the person
      * @param person person object being added to list
