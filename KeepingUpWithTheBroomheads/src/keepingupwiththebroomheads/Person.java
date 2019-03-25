@@ -14,7 +14,7 @@ import java.util.LinkedList;
  */
 public abstract class Person {
     private String name;
-    private LinkedList<DirectRelative> children;
+    private LinkedList<Person> children;
 
     /**
      * constructor
@@ -22,7 +22,7 @@ public abstract class Person {
      */
     public Person(String name) {
         this.name = name;
-        this.children = new LinkedList<DirectRelative>();
+        this.children = new LinkedList<Person>();
     }
     /**
      * Returns an array containing the parents of the given person. If the person is an
@@ -31,7 +31,7 @@ public abstract class Person {
     abstract Person[] getParents();
 
     /**
-     * Returns an array containing every relevent partner the person has had.
+     * Returns an array containing every relevant partner the person has had.
      * If they have no partners, returns an empty array
      */
     abstract Person[] getPartners();
@@ -41,7 +41,7 @@ public abstract class Person {
      * If they have no children, an empty array is returned.
      */
     public Person[] getChildren() {
-      Person[] childArray = new DirectRelative[children.size()];
+      Person[] childArray = new Person[children.size()];
       for(int i = 0; i < children.size(); i++) {
         childArray[i] = children.get(i);
       }

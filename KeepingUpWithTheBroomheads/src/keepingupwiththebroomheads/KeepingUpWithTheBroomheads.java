@@ -13,6 +13,8 @@ import java.io.IOException;
 
 import java.util.LinkedList;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author emma
@@ -32,7 +34,17 @@ public class KeepingUpWithTheBroomheads {
         Family = new LinkedList<Person>();
         loadFromCSV("family.csv");
         
+        showTree();
+        
     }
+    
+    public static void showTree() {
+        ViewTree frame = new ViewTree();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+    }
+    
     /**
      * Load family tree from csv file
      * @param filename the name of the csv file
