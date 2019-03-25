@@ -159,7 +159,4 @@ public class Person implements Comparable<Person>{
         return name.hashCode() + birthday;
       }
     }
-
-
->>>>>>> familytree
 }

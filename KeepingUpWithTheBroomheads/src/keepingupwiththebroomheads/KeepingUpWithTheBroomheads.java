@@ -35,14 +35,19 @@ public class KeepingUpWithTheBroomheads {
         Family = new LinkedList<Person>();
         loadFromCSV("family.csv");
         
-        showTree();
+        showTree(Family.get(0));
         
     }
     
-    public static void showTree() {
-        ViewTree frame = new ViewTree();
+    /*
+     * Open window with graph showing family data
+     */
+    public static void showTree(Person root) {
+    	int frameWidth = 400;
+    	int frameHeight = 300;
+        ViewTree frame = new ViewTree(root, frameWidth, frameHeight);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
+        frame.setSize(frameWidth, frameHeight);
         frame.setVisible(true);
     }
     
@@ -65,7 +70,7 @@ public class KeepingUpWithTheBroomheads {
             String name = entry[1];
             
             //create new person object
-            Person me = new Person(name);
+            Person me = new Person(name, 0);
             
             //get parent and partner info if present
             String[] parents = new String[0];
