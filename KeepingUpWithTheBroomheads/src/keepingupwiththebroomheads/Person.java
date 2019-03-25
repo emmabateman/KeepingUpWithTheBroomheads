@@ -141,7 +141,12 @@ public class Person implements Comparable<Person>{
 
       @Override
       public int compareTo(PersonalData other) {
-        return this.getBirthday() - other.getBirthday();
+          if(this.getBirthday() != other.getBirthday()) {
+            return this.getBirthday() - other.getBirthday();
+          } else {
+            return this.getName().compareTo(other.getName());
+          }
+          
       }
 
       @Override
