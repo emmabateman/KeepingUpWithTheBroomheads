@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -26,11 +27,11 @@ public class KeepingUpWithTheBroomheads {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        java.awt.EventQueue.invokeLater(() -> {
+/*        java.awt.EventQueue.invokeLater(() -> {
             BroomheadJFrame frame = new BroomheadJFrame();
             frame.setVisible(true);
         });
-        
+*/        
         Family = new LinkedList<Person>();
         loadFromCSV("family.csv");
         
