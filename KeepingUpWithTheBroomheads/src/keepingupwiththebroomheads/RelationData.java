@@ -60,6 +60,6 @@ public class RelationData{
     while(i.hasNext()) {
       partnerList.add(i.next());
     }
-    return parnterList();
+    return partnerList;
   }
 }
